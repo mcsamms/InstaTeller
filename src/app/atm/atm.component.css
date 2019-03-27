@@ -1,0 +1,21 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.flexContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    border: 1px solid black;
+}
+.insideFlex{
+    padding: 40px;
+    border: 2px solid darkgray;
+    height:350px;
+}
+.scrollbar{
+    overflow-y: scroll;
+    height: 200px;
+    width: 200px;
+}

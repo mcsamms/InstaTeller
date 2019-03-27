@@ -1,0 +1,59 @@
+<div class="flexContainer">
+  <div class="insideFlex">
+    <h4>Account Type</h4>
+    <input type="radio" name="Account" id="rdoSavings" checked="true" (change)="isChequing = false;" [checked]=this.isSavings>
+    Savings Account
+    <br>
+    <input type="radio" name="Account" id="rdoChequing" (change)="isChequing = true;" [checked]=this.isChequing>
+    Chequing Account
+    <br>
+    <label for="txtAmount">Amount</label>
+    <br>
+    <input type="text" name="Amount" id="txtAmount" [(ngModel)]="amount">
+    <br>
+    <br>
+    <input (click)="withdrawalAmount(amount)" type="button" value="Withdrawal" id="btnWithdrawal">
+    <br>
+    <input (click)="depositAmount(amount)" type="button" value="Deposit" id="btnDeposit">
+    <br>
+    <label name="error" for="" id="lblError">
+      {{this.output}}
+    </label>
+  </div>
+  <div id="middle" class="insideFlex">
+    <h4>Savings Transactions</h4>
+    <div name="SavingsTransactions" id="txtSavingsTrans" class="scrollbar">
+      <div *ngFor="let t of this.savingsAccount.transaction">
+        {{t.toString()}}
+      </div>
+    </div>
+    <h4>Current Balance</h4>
+    <label id="lblCurrentSavings">
+      {{this.savingsAccount.getBalance() | currency: '$':'code'}}
+    </label>
+  </div>
+  <div id="right" class="insideFlex">
+      <h4>Chequing Transactions</h4>
+      <div name="ChequingTransactions" id="txtChequingTrans" class="scrollbar">
+        <div *ngFor="let x of this.chequingAccount.transaction">
+          {{x.toString()}}
+        </div>
+      </div>
+      <h4>Current Balance</h4>
+      <label id="lblCurrentBal">
+        {{this.chequingAccount.getBalance() | currency: '$':'code'}}
+      </label>
+  </div>
+</div>
+<div>
+  <p *ngIf="this.clients.length == 0">No clients in the system</p>
+  <ul>
+      <li *ngFor="let client of this.clients">
+
+          <!--
+              i have client.toString method that is supposed to work using .toFixed function but it doesnt, please take a look at it
+          -->
+           First Name:  {{client.firstName}}  Last Name:   {{client.lastName}}  Height:  {{client.height}}  Weight:  {{client.weight}} +  BMI:  + {{client.BMI}};
+      </li>
+  </ul>
+</div>
